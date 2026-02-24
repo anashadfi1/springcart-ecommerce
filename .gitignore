@@ -1,0 +1,78 @@
+# ================================
+# Spring Boot / Java / Maven
+# ================================
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Maven target directory
+/springcart-api/target/
+**/target/
+
+# Spring Boot configuration files (if containing secrets)
+/springcart-api/src/main/resources/application.yaml
+/springcart-api/src/main/resources/application.properties
+
+# Eclipse / IntelliJ / VS Code files
+*.iml
+*.ipr
+*.iws
+.idea/
+.vscode/
+
+# Spring Boot temporary files
+spring.log
+spring.log.*
+
+# ================================
+# Node / Angular
+# ================================
+# Node modules
+/springcart-ui/node_modules/
+/springcart-ui/dist/
+/springcart-ui/.angular/
+
+# Environment files
+/springcart-ui/src/environments/*.ts
+
+# Angular build output
+/springcart-ui/out-tsc/
+/springcart-ui/.sass-cache/
+
+# Optional IDE files
+/springcart-ui/.vscode/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ================================
+# General
+# ================================
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+
+# Ignore IntelliJ project files at root
+.idea/
