@@ -18,7 +18,6 @@
 
 # Spring Boot configuration files (if containing secrets)
 /springcart-api/src/main/resources/application.yaml
-/springcart-api/src/main/resources/application.properties
 
 # Eclipse / IntelliJ / VS Code files
 *.iml
