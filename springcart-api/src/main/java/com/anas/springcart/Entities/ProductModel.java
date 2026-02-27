@@ -9,15 +9,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class ProductModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int Id;
+    private Integer Id;
     private String name;
     private String description;
     private DateTimeFormat date;
+    private String imageUrl;
 
-    public ProductModel(String name, String description, DateTimeFormat date) {
+    public ProductModel(String name, String description, DateTimeFormat date, String imageUrl) {
         this.name = name;
         this.description = description;
         this.date = date;
+        this.imageUrl = imageUrl;
     }
 
     public int getId() {
@@ -46,5 +48,13 @@ public class ProductModel {
 
     public void setDate(DateTimeFormat date) {
         this.date = date;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
