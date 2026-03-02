@@ -1,22 +1,25 @@
 package com.anas.springcart.Entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
-
+@Entity
 public class UserModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false, unique = true)
     private String email;
     private String password;
     @ManyToMany
     private List<Role> roles;
+
+    public UserModel() {
+    }
 
     public UserModel(String username, String email, String password, List<Role> roles) {
         this.username = username;

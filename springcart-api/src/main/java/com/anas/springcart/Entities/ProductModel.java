@@ -1,21 +1,23 @@
 package com.anas.springcart.Entities;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 
+@Entity
 public class ProductModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer Id;
     private String name;
     private String description;
-    private DateTimeFormat date;
+    private LocalDateTime date;
     private String imageUrl;
 
-    public ProductModel(String name, String description, DateTimeFormat date, String imageUrl) {
+    public ProductModel(String name, String description, LocalDateTime date, String imageUrl) {
         this.name = name;
         this.description = description;
         this.date = date;
@@ -34,7 +36,7 @@ public class ProductModel {
         return description;
     }
 
-    public DateTimeFormat getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -46,7 +48,7 @@ public class ProductModel {
         this.description = description;
     }
 
-    public void setDate(DateTimeFormat date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
