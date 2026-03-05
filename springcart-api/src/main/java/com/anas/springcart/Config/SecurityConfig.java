@@ -1,6 +1,5 @@
 package com.anas.springcart.Config;
 
-import com.anas.springcart.Security.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,17 +15,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
 
-    private final JwtFilter jwtFilter;
+    private final JwtAuthFilter jwtFilter;
     private final PasswordEncoder passwordEncoder;
 
-    public SecurityConfig(JwtFilter jwtFilter, PasswordEncoder passwordEncoder) {
+    public SecurityConfig(JwtAuthFilter jwtFilter, PasswordEncoder passwordEncoder) {
         this.jwtFilter = jwtFilter;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();  // ← no args constructor
+        authProvider.setUserDetailsService(userDetailsService);                     // ← set separately
         authProvider.setPasswordEncoder(passwordEncoder);
         return new ProviderManager(authProvider);
     }

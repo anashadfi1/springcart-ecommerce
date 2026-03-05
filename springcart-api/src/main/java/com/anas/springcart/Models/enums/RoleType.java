@@ -1,4 +1,4 @@
-package com.anas.springcart.Entities;
+package com.anas.springcart.Models.enums;
 
 public enum RoleType {
     ADMIN,

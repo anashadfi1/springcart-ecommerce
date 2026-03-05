@@ -1,10 +1,12 @@
-package com.anas.springcart.Entities;
+package com.anas.springcart.Models;
 
+import com.anas.springcart.Models.enums.RoleType;
 import jakarta.persistence.*;
 
 import java.util.List;
-import com.anas.springcart.Entities.RoleType;
+
 @Entity
+@Table(name="role_table")
 public class Role {
 
     @Id

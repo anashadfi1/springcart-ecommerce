@@ -1,7 +1,7 @@
 package com.anas.springcart.DTO;
 
-import com.anas.springcart.Entities.Role;
-import java.time.LocalDate;
+import com.anas.springcart.Models.Role;
+
 import java.util.List;
 
 public class UserDTO {

@@ -1,10 +1,11 @@
-package com.anas.springcart.Entities;
+package com.anas.springcart.Models;
 
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "user_table")
 public class UserModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -14,8 +15,14 @@ public class UserModel {
 
     @Column(nullable = false, unique = true)
     private String email;
+    @Column(nullable = false)
     private String password;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
     private List<Role> roles;
 
     public UserModel() {

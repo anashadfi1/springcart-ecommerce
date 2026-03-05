@@ -1,8 +1,8 @@
 package com.anas.springcart.Services;
 
 import com.anas.springcart.DTO.UserDTO;
-import com.anas.springcart.Entities.Role;
-import com.anas.springcart.Entities.UserModel;
+import com.anas.springcart.Models.Role;
+import com.anas.springcart.Models.UserModel;
 import com.anas.springcart.Repositories.RoleRepository;
 import com.anas.springcart.Repositories.UserRepository;
 

@@ -1,13 +1,11 @@
-package com.anas.springcart.Entities;
+package com.anas.springcart.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name="product_table")
 public class ProductModel {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

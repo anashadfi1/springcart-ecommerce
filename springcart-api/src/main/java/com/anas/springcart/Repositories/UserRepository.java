@@ -1,9 +1,8 @@
 package com.anas.springcart.Repositories;
 
-import com.anas.springcart.Entities.UserModel;
-import com.anas.springcart.Entities.Role;
+import com.anas.springcart.Models.UserModel;
+import com.anas.springcart.Models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
