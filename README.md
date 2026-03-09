@@ -10,7 +10,7 @@ Java Spring Boot for server side http requests, and a fully featured user experi
 </div>
 <div>
     <h3>Here is Our Angular sign-up page user interface</h4>
-    <img src="springcat-ui/images/register-page.png" alt = "register-screenshot"/>
+    <img src="springcart-ui/images/register-page.png" alt = "register-screenshot"/>
 </div>
 
 </div>
