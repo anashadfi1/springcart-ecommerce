@@ -5,6 +5,7 @@ springcart is an e-commerce plateform to sell electronic items, with a role base
 Java Spring Boot for server side http requests, and a fully featured user experience with Angula  </p>
 <div>
 <div>
+<div class='flex'>
     <h3>Here is Our Angular login page user interface</h4>
     <img src="springcart-ui/images/login-page.png" alt = "login-screenshot"/>
 </div>
@@ -12,5 +13,5 @@ Java Spring Boot for server side http requests, and a fully featured user experi
     <h3>Here is Our Angular sign-up page user interface</h4>
     <img src="springcart-ui/images/register-page.png" alt = "register-screenshot"/>
 </div>
-
+</div>
 </div>
