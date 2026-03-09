@@ -5,6 +5,7 @@ import com.anas.springcart.Services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -15,39 +16,33 @@ public class ProductController {
 
     private final ProductService productService;
 
-    // --- Get all products ---
     @GetMapping
     public ResponseEntity<List<ProductDto>> getAllProducts() {
-        List<ProductDto> products = productService.getAllProducts();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
-    // --- Get product by ID ---
     @GetMapping("/{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable Integer id) {
-        ProductDto product = productService.getProductById(id);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+        return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    // --- Create new product ---
     @PostMapping
+    @PreAuthorize("hasAnyRole('SELLER', 'ADMIN')")
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto productDto) {
-        ProductDto createdProduct = productService.createProduct(productDto);
-        return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+        return new ResponseEntity<>(productService.createProduct(productDto), HttpStatus.CREATED);
     }
 
-    // --- Update product ---
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('SELLER', 'ADMIN')")
     public ResponseEntity<ProductDto> updateProduct(@PathVariable Integer id,
                                                     @RequestBody ProductDto productDto) {
-        ProductDto updatedProduct = productService.updateProduct(id, productDto);
-        return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+        return ResponseEntity.ok(productService.updateProduct(id, productDto));
     }
 
-    // --- Delete product ---
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('SELLER', 'ADMIN')")
     public ResponseEntity<Void> deleteProduct(@PathVariable Integer id) {
         productService.deleteProduct(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -5,9 +5,9 @@ import com.anas.springcart.Services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/categories")
 @RequiredArgsConstructor
@@ -15,24 +15,19 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    // --- Get all categories ---
     @GetMapping
     public ResponseEntity<List<CategoryDto>> getAllCategories() {
-        List<CategoryDto> categories = categoryService.getAllCategories();
-        return new ResponseEntity<>(categories, HttpStatus.OK);
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
-    // --- Get category by ID ---
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Integer id) {
-        CategoryDto category = categoryService.getCategoryById(id);
-        return new ResponseEntity<>(category, HttpStatus.OK);
+        return ResponseEntity.ok(categoryService.getCategoryById(id));
     }
 
-    // --- Create new category ---
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoryDto> createCategory(@RequestBody CategoryDto categoryDto) {
-        CategoryDto created = categoryService.createCategory(categoryDto);
-        return new ResponseEntity<>(created, HttpStatus.CREATED);
+        return new ResponseEntity<>(categoryService.createCategory(categoryDto), HttpStatus.CREATED);
     }
 }
