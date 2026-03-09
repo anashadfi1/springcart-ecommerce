@@ -1,0 +1,69 @@
+<div class="min-h-screen bg-slate-950">
+  <app-navbar></app-navbar>
+
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-white mb-6">Shopping Cart</h1>
+
+    @if (cartService.items().length === 0) {
+      <div class="text-center py-20 text-slate-400">
+        <p class="text-6xl mb-4">🛒</p>
+        <p class="text-lg font-medium">Your cart is empty</p>
+        <a routerLink="/products"
+          class="inline-block mt-4 px-6 py-2 bg-orange-500 hover:bg-orange-400 text-white font-semibold rounded-lg transition">
+          Start Shopping
+        </a>
+      </div>
+    } @else {
+      <div class="flex flex-col lg:flex-row gap-6">
+        <div class="flex-1 space-y-4">
+          @for (item of cartService.items(); track item.product.id) {
+            <div class="bg-slate-800 border border-white/10 rounded-2xl p-4 flex gap-4 items-center">
+              <img [src]="item.product.image" [alt]="item.product.name"
+                class="w-20 h-20 object-cover rounded-xl bg-slate-700"/>
+              <div class="flex-1">
+                <p class="text-xs text-orange-500 font-semibold">{{ item.product.brand }}</p>
+                <h3 class="text-white font-semibold">{{ item.product.name }}</h3>
+                <p class="text-lg font-bold text-white mt-1">${{ item.product.price }}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button (click)="cartService.updateQuantity(item.product.id, item.quantity - 1)"
+                  class="w-8 h-8 rounded-full bg-white/10 text-white font-bold hover:bg-orange-500 transition">−</button>
+                <span class="w-6 text-center text-white font-semibold">{{ item.quantity }}</span>
+                <button (click)="cartService.updateQuantity(item.product.id, item.quantity + 1)"
+                  class="w-8 h-8 rounded-full bg-white/10 text-white font-bold hover:bg-orange-500 transition">+</button>
+              </div>
+              <button (click)="cartService.remove(item.product.id)"
+                class="text-slate-400 hover:text-red-500 transition text-xl ml-2">✕</button>
+            </div>
+          }
+        </div>
+
+        <!-- Summary -->
+        <div class="w-full lg:w-72 flex-shrink-0">
+          <div class="bg-slate-800 border border-white/10 rounded-2xl p-6">
+            <h2 class="text-lg font-bold text-white mb-4">Order Summary</h2>
+            <div class="flex justify-between text-slate-300 text-sm mb-2">
+              <span>Items ({{ cartService.totalItems() }})</span>
+              <span>${{ cartService.totalPrice() }}</span>
+            </div>
+            <div class="flex justify-between text-slate-300 text-sm mb-4">
+              <span>Shipping</span>
+              <span class="text-green-500 font-medium">Free</span>
+            </div>
+            <div class="border-t border-white/10 pt-4 flex justify-between font-bold text-white">
+              <span>Total</span>
+              <span class="text-orange-500">${{ cartService.totalPrice() }}</span>
+            </div>
+            <button class="mt-4 w-full py-3 bg-orange-500 hover:bg-orange-400 text-white font-bold rounded-xl transition">
+              Checkout
+            </button>
+            <a routerLink="/products"
+              class="block text-center mt-3 text-sm text-slate-400 hover:text-orange-500 transition">
+              ← Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

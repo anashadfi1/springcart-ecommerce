@@ -4,20 +4,39 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'https://localhost:8080/api'; // 🔁 Replace with your API URL
+
+  private apiUrl = 'http://localhost:8080/api/auth';
 
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, { email, password });
+  login(username: string, password: string): Observable<string> {
+    return this.http.post(`${this.apiUrl}/login`,
+      { username, password },
+      { responseType: 'text' }
+    );
   }
 
-  signup(name: string, email: string, password: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signup`, { name, email, password });
+  signup(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, {
+      username,
+      email,
+      password
+    });
   }
 
-  saveToken(token: string): void { localStorage.setItem('token', token); }
-  getToken(): string | null { return localStorage.getItem('token'); }
-  logout(): void { localStorage.removeItem('token'); }
-  isLoggedIn(): boolean { return !!this.getToken(); }
+  saveToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
 }

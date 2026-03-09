@@ -11,12 +11,12 @@ function passwordMatchValidator(control: AbstractControl): ValidationErrors | nu
 }
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-register',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './signup.html',
+  templateUrl: './register.html',
 })
-export class SignupComponent {
+export class RegisterComponent {
   signupForm: FormGroup;
   errorMessage = '';
   isLoading = false;
