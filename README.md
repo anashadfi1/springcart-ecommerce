@@ -6,11 +6,11 @@ Java Spring Boot for server side http requests, and a fully featured user experi
 <div>
 <div>
     <h3>Here is Our Angular login page user interface</h4>
-    <img src="readme-content/login-screenshot" alt = ""login-screenshot"/>
+    <img src="springcart-ui/images/login-page.png" alt = "login-screenshot"/>
 </div>
 <div>
-    <h3>Here is Our Angular login page user interface</h4>
-    <img src="readme-content/login-screenshot" alt = ""login-screenshot"/>
+    <h3>Here is Our Angular sign-up page user interface</h4>
+    <img src="springcat-ui/images/register-page.png" alt = "register-screenshot"/>
 </div>
 
 </div>
