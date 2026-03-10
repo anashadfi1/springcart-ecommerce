@@ -32,6 +32,14 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     @Override
     public UserDTO createUser(UserDTO dto) {
 
+        if (userRepository.existsByUsername(dto.getUsername())) {
+            throw new IllegalArgumentException("Username already taken");
+        }
+
+        if (userRepository.existsByEmail(dto.getEmail())) {
+            throw new IllegalArgumentException("Email already registered");
+        }
+
         UserModel user = new UserModel();
         user.setUsername(dto.getUsername());
         user.setEmail(dto.getEmail());
@@ -41,7 +49,6 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
         UserModel savedUser = userRepository.save(user);
         return mapToDTO(savedUser);
     }
-
     @Override
     public UserDTO getUserById(Integer id) {
         UserModel user = userRepository.findById(id)
